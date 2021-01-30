@@ -55,24 +55,32 @@
                     <input class="inp-style" type="date" name="">
                 </div>
             </div>
+            <!--assignment-->
             <div class="input-group f-class">
                 <div>
-                    <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <h4>First Class $<span id="firstprice">150</span></h4>
+                    <!-- <label for="">First Class ($150)</label> -->
+                    <h4><span id="firstclassincrement">+</span></h4>
+
+                    <input id="firstclassquantity" class="inp-style inp-width " type="text" name="" placeholder="Quantity">
+                    
+                    <h4><span id="firstclassdecrement" >-</span></h4>
                 </div>
-                <div class="plus-minus-btn">
-                    <p>+ -</p>
-                </div>
+                
             </div>
             
             <div class="input-group f-class">
                 <div>
-                    <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <h4>Economy Class $<span id="economyprice">100</span></h4>
+                    <!-- <label for="">Economy ($100)</label> -->
+                    <h4><span id="economyclassincrement">+</span></h4>
+
+                    <input id="economyclassquantity" class="inp-style inp-width" type="text" name="" placeholder="Quantity">
+
+                    <h4><span id="economyclassdecrement">-</span></h4>
+
                 </div>
-                <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
-                </div>
+                
             </div>
             <div class="calculations">
                 <div class="amount">
@@ -80,7 +88,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p><span id="subtotal">0</span></p>
                     </div>
                 </div>
 
@@ -89,7 +97,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p><span id="vat">0</span></p>
                     </div>
                 </div>
                 <hr>
@@ -98,7 +106,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p><span id="total">0</span></p>
                     </div>
                 </div>
             </div>
@@ -107,6 +115,67 @@
     </main>
 
     <!--Thank You-->
+    <script>
+        
+        // //taking price value in variable
+        //        var firstPrice = document.getElementById("firstprice").innerText;
+        //        var economyPrice = document.getElementById("economyprice").innerText;
+
+        //        //price calculation function
+        //        function priceTotal() {
+        //           var total = valueCount * firstPrice;
+        //           document.getElementById("price").innerText = total
+        //        } 
+
+
+        //increment  of First Class//
+        document.getElementById("firstclassincrement").addEventListener("click",function(){
+            valueCount=document.getElementById("firstclassquantity").value;
+            valueCount++;
+            document.getElementById("firstclassquantity").value=valueCount;
+
+            
+        })
+        //decrement of First Class//
+        document.getElementById("firstclassdecrement").addEventListener("click",function(){
+            valueCount=document.getElementById("firstclassquantity").value;
+            valueCount--;
+            document.getElementById("firstclassquantity").value=valueCount;
+            
+        })
+        
+
+
+        //increment of Economy Class//
+            document.getElementById("economyclassincrement").addEventListener("click",function(){
+            valueCount=document.getElementById("economyclassquantity").value;
+            valueCount++;
+            document.getElementById("economyclassquantity").value=valueCount;
+        })
+        //decrement of Economy Class//
+        document.getElementById("economyclassdecrement").addEventListener("click",function(){
+            valueCount=document.getElementById("economyclassquantity").value;
+            valueCount--;
+            document.getElementById("economyclassquantity").value=valueCount;
+
+            
+            
+        })
+        
+
+        function calculation(){
+
+
+            const subtotal=getElementById("subtotal").innerText;
+            const subtotalNumber =parseFloat(subtotal);
+            const subtotalAmount =subtotalNumber + valueCount*150;
+            document.getElementById("subtotal").innerText= subtotalAmount;
+
+            // subtotal=document.getElementById("firstprice").innerText* valueCount + document.getElementById("economyprice").innerText* valueCount;
+            
+            
+        }
+    </script>
 </body>
 
 </html>
