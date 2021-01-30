@@ -62,7 +62,7 @@
                     <!-- <label for="">First Class ($150)</label> -->
                     <h4><span id="firstclassincrement">+</span></h4>
 
-                    <input id="firstclassquantity" class="inp-style inp-width " type="text" name="" placeholder="Quantity">
+                    <input id="firstclassquantity" class="inp-style inp-width " value ="0" type="text" name="" >
                     
                     <h4><span id="firstclassdecrement" >-</span></h4>
                 </div>
@@ -75,7 +75,7 @@
                     <!-- <label for="">Economy ($100)</label> -->
                     <h4><span id="economyclassincrement">+</span></h4>
 
-                    <input id="economyclassquantity" class="inp-style inp-width" type="text" name="" placeholder="Quantity">
+                    <input id="economyclassquantity" class="inp-style inp-width" type="text" value ="0" name="" >
 
                     <h4><span id="economyclassdecrement">-</span></h4>
 
@@ -110,30 +110,37 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="booknow" class="btn-style">Book Now</button>
         </div>
     </main>
 
     <!--Thank You-->
     <script>
         
-        // //taking price value in variable
-        //        var firstPrice = document.getElementById("firstprice").innerText;
-        //        var economyPrice = document.getElementById("economyprice").innerText;
-
-        //        //price calculation function
-        //        function priceTotal() {
-        //           var total = valueCount * firstPrice;
-        //           document.getElementById("price").innerText = total
-        //        } 
-
-
         //increment  of First Class//
         document.getElementById("firstclassincrement").addEventListener("click",function(){
             valueCount=document.getElementById("firstclassquantity").value;
             valueCount++;
             document.getElementById("firstclassquantity").value=valueCount;
 
+            //subtotal Calculation//
+
+            const classQuantity=document.getElementById("firstclassquantity").value;
+            const classQuantityNumber=parseFloat(classQuantity);
+
+            const economyQuantity=document.getElementById("economyclassquantity").value;
+            const economyQuantityNumber=parseFloat(economyQuantity);
+
+            const subtotal = classQuantityNumber*150 +economyQuantityNumber*100;
+            document.getElementById("subtotal").innerText= subtotal;
+
+            //vat calculation//
+            const vatAmount =subtotal*.10;
+            document.getElementById("vat").innerText=vatAmount;
+
+            //Total calculation//
+            const totalAmount = subtotal+ vatAmount;
+            document.getElementById("total").innerText=totalAmount; 
             
         })
         //decrement of First Class//
@@ -141,6 +148,24 @@
             valueCount=document.getElementById("firstclassquantity").value;
             valueCount--;
             document.getElementById("firstclassquantity").value=valueCount;
+            //subtotal Calculation//
+            const classQuantity=document.getElementById("firstclassquantity").value;
+            const classQuantityNumber=parseFloat(classQuantity);
+
+            const economyQuantity=document.getElementById("economyclassquantity").value;
+            const economyQuantityNumber=parseFloat(economyQuantity);
+
+            const subtotal = classQuantityNumber*150 +economyQuantityNumber*100;
+            document.getElementById("subtotal").innerText= subtotal;
+
+            //vat calculation//
+            const vatAmount =subtotal*.10;
+            document.getElementById("vat").innerText=vatAmount;
+
+            //Total calculation//
+            const totalAmount = subtotal+ vatAmount;
+            document.getElementById("total").innerText=totalAmount;
+            
             
         })
         
@@ -151,6 +176,27 @@
             valueCount=document.getElementById("economyclassquantity").value;
             valueCount++;
             document.getElementById("economyclassquantity").value=valueCount;
+
+                //subtotal Calculation//
+
+            const classQuantity=document.getElementById("firstclassquantity").value;
+            const classQuantityNumber=parseFloat(classQuantity);
+
+            const economyQuantity=document.getElementById("economyclassquantity").value;
+            const economyQuantityNumber=parseFloat(economyQuantity);
+
+            const subtotal = classQuantityNumber*150 +economyQuantityNumber*100;
+            document.getElementById("subtotal").innerText= subtotal;
+
+                //vat calculation//
+            const vatAmount =subtotal*.10;
+            document.getElementById("vat").innerText=vatAmount;
+
+            //Total calculation//
+            const totalAmount = subtotal+ vatAmount;
+            document.getElementById("total").innerText=totalAmount;
+
+          
         })
         //decrement of Economy Class//
         document.getElementById("economyclassdecrement").addEventListener("click",function(){
@@ -158,23 +204,38 @@
             valueCount--;
             document.getElementById("economyclassquantity").value=valueCount;
 
+
+            //subtotal Calculation//
+            const classQuantity=document.getElementById("firstclassquantity").value;
+            const classQuantityNumber=parseFloat(classQuantity);
+
+            const economyQuantity=document.getElementById("economyclassquantity").value;
+            const economyQuantityNumber=parseFloat(economyQuantity);
+
+            const subtotal = classQuantityNumber*150 +economyQuantityNumber*100;
+            document.getElementById("subtotal").innerText= subtotal;
+
+
+            //vat calculation//
+            const vatAmount =subtotal*.10;
+            document.getElementById("vat").innerText=vatAmount;
+
+
+            //Total calculation//
+            const totalAmount = subtotal+ vatAmount;
+            document.getElementById("total").innerText=totalAmount;  
+            
             
             
         })
+        //confirmation Message//
+        const booknow=document.getElementById("booknow");
+        booknow.addEventListener("click",function(){
+
+            alert("Congratulations! Your ticket booking is confirmed")
+        })
         
 
-        function calculation(){
-
-
-            const subtotal=getElementById("subtotal").innerText;
-            const subtotalNumber =parseFloat(subtotal);
-            const subtotalAmount =subtotalNumber + valueCount*150;
-            document.getElementById("subtotal").innerText= subtotalAmount;
-
-            // subtotal=document.getElementById("firstprice").innerText* valueCount + document.getElementById("economyprice").innerText* valueCount;
-            
-            
-        }
     </script>
 </body>
 
